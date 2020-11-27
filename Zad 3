@@ -1,0 +1,41 @@
+abc = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+filepath = 'D:\Meme\\WUZ3_zad2_wiadomosc_3.txt'
+f = open(filepath, 'r')
+
+arr = f.read().split()
+
+def AbcToInt(s):
+	answer = 0
+	answer += 26 * abc.index(s[0])
+	answer += abc.index(s[1])
+	return answer
+
+def IntToAbc(n):
+	while n > 675:
+		n = n - 676
+	while n < 0:
+		n = n + 676
+	answer = ''
+	answer += abc[(n // 26)]  
+	answer += abc[(n % 26)]
+	return answer
+klucz = -814
+answer = ''
+for i in arr:
+	j = 0
+	while j < len(i) - 1:
+		if i[j] not in abc:
+			answer += i[j]
+			j += 1
+		elif i[j + 1] not in abc:
+			answer += i[j + 1]
+			j += 1
+		else:
+			answer += IntToAbc(AbcToInt(i[j] + i[j + 1]) + klucz)
+			j += 2
+	if len(i) % 2 == 1:
+		answer += i[-1:]
+	answer += ' '
+			
+print(answer)
+	
