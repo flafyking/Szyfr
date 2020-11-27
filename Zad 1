@@ -1,0 +1,5 @@
+filepath = 'D:\Meme\\WUZ3_zad2_wiadomosc_1.txt'
+f = open(filepath, 'r')
+
+arr = f.read().split()
+print(len(arr))
